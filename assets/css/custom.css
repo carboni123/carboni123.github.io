@@ -1,0 +1,83 @@
+/* Global Default (Light Mode) */
+body {
+    background-color: #fff;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Global Dark Mode Overrides */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Custom styles for blog post content - Light Mode */
+.post-content {
+    max-width: 800px;
+    margin: 40px auto;
+    /* Centers the container */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    color: #333;
+}
+
+/* Headings inside post content */
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 1.5em;
+}
+
+/* Paragraphs */
+.post-content p {
+    margin-bottom: 1em;
+}
+
+/* Responsive Images */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+/* Code blocks */
+.post-content pre,
+.post-content code {
+    background: #f4f4f4;
+    padding: 0.5em;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+/* Dark Mode Overrides for Post Content */
+body.dark-mode .post-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark Mode tweaks for headings in post content */
+body.dark-mode .post-content h1,
+body.dark-mode .post-content h2,
+body.dark-mode .post-content h3 {
+    color: #f0f0f0;
+}
+
+.theme-toggle-container {
+    text-align: center;
+    margin: 20px 0;
+    /* Optional: Adjust spacing as needed */
+}
+
+/* Optionally, style the button itself */
+#theme-toggle {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}

@@ -1,3 +1,9 @@
+---
+layout: post
+title: "A shift from CPUs to LLMs: A New Age of Computing"
+date: 2025-03-19
+---
+
 # A shift from CPUs to LLMs: A New Age of Computing
 
 ## How a CPU Works: The Brain of Your Computer
@@ -56,7 +62,7 @@ This fundamental shift signifies a profound change in human-computer interaction
 ---
 
 ## Reimagining the Future: Enter the LLM OS
-![LLM OS (Karpathy, A.)](llm_os.png "As envisioned by Andrej Karpathy")
+![LLM OS (Karpathy, A.)](/assets/images/llm_os.png "As envisioned by Andrej Karpathy")
 
 As we stand on the brink of a transformative technological era, the concept of an LLM-powered operating system—a groundbreaking idea popularized by thought leaders like Andrej Karpathy—offers a glimpse into a potential future. This vision redefines computing by placing natural language processing at its core.
 
