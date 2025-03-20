@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RGB Color Space Visualization</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    #controls {
+      position: absolute;
+      top: 10px;
+      left: Cube10px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="controls">
+    <label>Weight R: <input type="number" id="wR" value="1" step="0.01"></label><br>
+    <label>Weight G: <input type="number" id="wG" value="1" step="0.01"></label><br>
+    <label>Weight B: <input type="number" id="wB" value="1" step="0.01"></label><br>
+    <label>Threshold: <input type="number" id="threshold" value="0" step="0.01"></label><br>
+    <button id="apply">Apply</button>
+    <button id="reset">Reset</button>
+  </div>
+  <div id="container"></div>
+  
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'https://unpkg.com/three@0.134.0/examples/jsm/controls/OrbitControls.js';
+
+    const container = document.getElementById('container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+
+    camera.position.set(1.5, 1.5, 1.5);
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.target.set(0.5, 0.5, 0.5);
+    controls.update();
+
+    const axesHelper = new THREE.AxesHelper(1);
+    scene.add(axesHelper);
+
+    // Generate the point cloud
+    const n = 32; // 32^3 points
+    const positions = [];
+    const colors = [];
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        for (let k = 0; k < n; k++) {
+          const x = i / (n - 1);
+          const y = j / (n - 1);
+          const z = k / (n - 1);
+          positions.push(x, y, z);
+          colors.push(x, y, z, 1); // RGBA, alpha starts at 1 (opaque)
+        }
+      }
+    }
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4)); // 4 components: RGBA
+
+    const material = new THREE.PointsMaterial({
+      vertexColors: true,
+      size: 0.02,
+      transparent: true // Enable alpha transparency
+    });
+
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    // Function to update colors and alpha based on weights and threshold
+    function updateColorsFromInputs() {
+      const wR = parseFloat(document.getElementById('wR').value);
+      const wG = parseFloat(document.getElementById('wG').value);
+      const wB = parseFloat(document.getElementById('wB').value);
+      const threshold = parseFloat(document.getElementById('threshold').value);
+
+      const positions = geometry.attributes.position.array;
+      const colors = geometry.attributes.color.array;
+
+      for (let i = 0; i < positions.length; i += 3) {
+        const R = positions[i];     // Red
+        const G = positions[i + 1]; // Green
+        const B = positions[i + 2]; // Blue
+        const y = wR * R + wG * G + wB * B;
+        const idx = (i / 3) * 4; // Index for color array (4 components per vertex)
+
+        if (y > threshold) {
+          colors[idx] = R;     // Red
+          colors[idx + 1] = G; // Green
+          colors[idx + 2] = B; // Blue
+          colors[idx + 3] = 1; // Fully opaque
+        } else {
+          colors[idx] = R;     // Red (optional, can be 0)
+          colors[idx + 1] = G; // Green (optional, can be 0)
+          colors[idx + 2] = B; // Blue (optional, can be 0)
+          colors[idx + 3] = 0; // Fully transparent (hidden)
+        }
+      }
+      geometry.attributes.color.needsUpdate = true;
+    }
+
+    // Event listeners
+    document.getElementById('apply').addEventListener('click', updateColorsFromInputs);
+    document.getElementById('reset').addEventListener('click', () => {
+      document.getElementById('wR').value = 1;
+      document.getElementById('wG').value = 1;
+      document.getElementById('wB').value = 1;
+      document.getElementById('threshold').value = 0;
+      updateColorsFromInputs();
+    });
+
+    // Apply initial settings
+    updateColorsFromInputs();
+
+    // Render loop
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
