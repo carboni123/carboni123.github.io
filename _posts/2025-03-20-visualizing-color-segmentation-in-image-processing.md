@@ -32,6 +32,8 @@ After calculating this weighted sum, the resulting values span both negative and
 
 ## Visualizing Color Segmentation
 
+![Color Cube](/assets/images/3-d-color-cube.png "A 3D color cube")
+
 To really understand how the ExG-R algorithm works, visualization is key. I’ve created an interactive 3D color cube that lets you explore the RGB color space dynamically. Each point in the cube represents a unique RGB combination, and its brightness reflects the segmented value based on the weights you choose. By adjusting these weights, you can see in real time how different colors are emphasized or diminished.
 
 For instance, if you set the weights as follows:
@@ -44,7 +46,11 @@ this configuration effectively implements the ExG-R algorithm. It brightens gree
 
 ## Try the Interactive 3D Color Cube
 
-Ready to experiment on your own? Check out the interactive 3D color cube visualization by clicking [here]({{ "/assets/pages/color_segmentation.html" | relative_url }}). Play around with the red, green, and blue weight values, create your own segmentation algorithms, and see how the cube responds in real time. It’s a fun, hands-on way to explore color segmentation!
+Ready to experiment on your own? Check out the interactive 3D color cube visualization by clicking the button below. Play around with the red, green, and blue weight values, create your own segmentation algorithms, and see how the cube responds in real time. It’s a fun, hands-on way to explore color segmentation!
+
+<div style="text-align: center; margin: 20px 0;">
+  <a href="{{ "/assets/pages/color_segmentation.html" | relative_url }}" style="font-size: 1.5em; font-weight: bold; background-color: #007acc; color: #fff; padding: 15px 30px; border-radius: 8px; text-decoration: none;">Try the 3D Color Cube Now!</a>
+</div>
 
 ## Conclusion
 
