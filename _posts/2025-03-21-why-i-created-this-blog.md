@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Why I Created This Blog"
+date: 2025-03-21
+---
+
 # Why I Created This Blog
 
 Maybe I should have started this blog with a post like this. However, as the saying goes, "Action speaks louder than words."  
