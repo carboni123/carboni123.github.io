@@ -50,4 +50,4 @@ Site cards take minutes to implement, live forever in your templates, and pay co
 
 # See the results
 ![Without site card](/assets/images/without-site-card.png "Post without site card")
-![With site card](/assets/images/without-site-card.png "Post with site card")
+![With site card](/assets/images/with-site-card.png "Post with site card")
