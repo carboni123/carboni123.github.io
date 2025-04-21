@@ -1,12 +1,13 @@
 <!-- _includes/head.html -->
-{%- comment -%}
-Anything above `{% seo %}` becomes part of every page title/charset/etc.
-{%- endcomment -%}
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <title>{{ page.title | default: site.title }}</title>
 
-<!-- Let jekyll‑seo‑tag build all Open Graph & Twitter tags -->
+<!-- 1) Slate’s core stylesheet -->
+<link rel="stylesheet"
+      href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+<!-- 2) SEO / Open Graph / Twitter tags -->
 {% seo %}
 
-<!-- Optional: extra CSS or JS that must sit in <head> -->
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+<!-- 3) Your custom overrides -->
+<!-- <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}"> -->
