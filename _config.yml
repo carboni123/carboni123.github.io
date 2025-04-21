@@ -6,9 +6,18 @@ github_username: "carboni123"
 twitter_username: "carboni_01"
 logo: "/assets/images/site-card.jpg"
 
+# Set a default Open Graph / Twitter Card image for every page
+defaults:
+  - scope:
+      path: ""            # applies to all files
+    values:
+      image: "/assets/images/site-card.jpg"
+      twitter:
+        card: summary_large_image
+
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
-  - jekyll-seo-tag 
+  - jekyll-seo-tag
 
 remote_theme: pages-themes/slate@v0.2.0
