@@ -1,6 +1,7 @@
 ---
 layout: default
-title: "My Blog"
+title: "Diego's Blog"
+description: "Resources for cutting‑edge insights on the evolution of Large Language Models, AI tooling, image processing and schema‑first design."
 ---
 
 # Welcome to my Blog
