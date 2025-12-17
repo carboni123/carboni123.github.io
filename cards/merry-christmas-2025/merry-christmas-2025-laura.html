@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A little note across time zones ✈️</title>
+  <meta name="description" content="A tiny digital card, built with love (and a little jet fuel)." />
+
+  <!-- Social preview (works best once hosted with a real URL) -->
+  <meta property="og:title" content="A little note across time zones ✈️" />
+  <meta property="og:description" content="Tap to open your card." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg1: #0b1026;
+      --bg2: #111a3a;
+      --card: #0f1530cc;
+      --text: #f6f7ff;
+      --muted: #c6c9ffcc;
+      --accent: #7c5cff;
+      --accent2: #2fe4ff;
+      --ok: #2ee59d;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 20% 10%, #1b2a6a 0%, transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, #2a1b6a 0%, transparent 55%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .card {
+      width: min(880px, 100%);
+      background: linear-gradient(180deg, #0f1530dd, #0f1530aa);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Christmas lights (pure CSS) */
+    .card:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 52px;
+      background:
+        radial-gradient(circle at 20px 34px, rgba(255, 255, 255, .95) 0 4px, transparent 6px),
+        radial-gradient(circle at 60px 34px, rgba(47, 228, 255, .95) 0 4px, transparent 6px),
+        radial-gradient(circle at 100px 34px, rgba(124, 92, 255, .95) 0 4px, transparent 6px),
+        radial-gradient(circle at 140px 34px, rgba(46, 229, 157, .95) 0 4px, transparent 6px),
+        radial-gradient(circle at 180px 34px, rgba(255, 200, 80, .95) 0 4px, transparent 6px),
+        linear-gradient(180deg, rgba(0, 0, 0, .25), transparent);
+      background-size: 200px 52px, 200px 52px, 200px 52px, 200px 52px, 200px 52px, auto;
+      background-repeat: repeat-x;
+      opacity: .85;
+      pointer-events: none;
+      z-index: 1;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .35));
+      animation: twinkle 2.8s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: .78
+      }
+
+      50% {
+        opacity: .98
+      }
+    }
+
+    .overlay-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .overlay-layer img {
+      position: absolute;
+      max-width: 60%;
+      height: auto;
+      opacity: .95;
+      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, .35));
+    }
+
+    .overlay-layer img.o1 {
+      top: -10px;
+      left: -10px;
+      width: 320px;
+      transform: rotate(-3deg);
+    }
+
+    .overlay-layer img.o2 {
+      top: -14px;
+      right: -6px;
+      width: 300px;
+      transform: rotate(4deg);
+    }
+
+    .overlay-layer img.o3 {
+      bottom: -22px;
+      right: 18px;
+      width: 260px;
+      opacity: .85;
+    }
+
+    .top,
+    .grid,
+    .footer {
+      position: relative;
+      z-index: 3;
+    }
+
+    .top {
+      padding: 48px 42px 22px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    /* Extra-opaque background for the clock badge so it stays readable over PNG overlays */
+    .clock-badge {
+      background: rgba(15, 21, 48, 0.92);
+      border-color: rgba(255, 255, 255, .18);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
+      backdrop-filter: blur(8px);
+      margin: 5px 30px 0;
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .badge b {
+      color: var(--text);
+      font-weight: 600
+    }
+
+    /* Make names readable over bright PNGs */
+    #toName,
+    #fromName {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(15, 21, 48, 0.88);
+      border: 1px solid rgba(255, 255, 255, .14);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(22px, 3.4vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+    }
+
+    .subtitle {
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 58ch;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .pane {
+      padding: 22px 26px;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .10);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .big {
+      font-size: 18px;
+      line-height: 1.55;
+      margin: 10px 0 0;
+      white-space: pre-wrap;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-weight: 600;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 25px rgba(124, 92, 255, .25);
+      transition: transform .08s ease, filter .2s ease;
+    }
+
+    button.secondary {
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .12);
+      box-shadow: none;
+      color: var(--text);
+    }
+
+    button:active {
+      transform: translateY(1px)
+    }
+
+    button:hover {
+      filter: brightness(1.05)
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    /* "Flight strip" style */
+    .strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, .18);
+      border: 1px solid rgba(255, 255, 255, .10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .strip:before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(90deg, transparent, rgba(47, 228, 255, .22), transparent);
+      transform: translateX(-60%);
+      animation: sheen 4.6s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sheen {
+      0% {
+        transform: translateX(-70%)
+      }
+
+      100% {
+        transform: translateX(70%)
+      }
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .12);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(46, 229, 157, .14)
+    }
+
+    /* Plane path */
+    .sky {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .55;
+      z-index: 0;
+    }
+
+    .sky svg {
+      width: 100%;
+      height: 100%
+    }
+
+    .footer {
+      padding: 16px 26px 22px;
+      border-top: 1px solid rgba(255, 255, 255, .10);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    a {
+      color: inherit
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 14px;
+      opacity: .9;
+      transform: rotate(0deg);
+      animation: fall linear forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: .95
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <main class="card" aria-label="Digital card">
+      <div class="badge mono clock-badge" title="Local time">
+        <span>🕒</span>
+        <span id="clock">--:--</span>
+      </div>
+      <div class="sky" aria-hidden="true">
+        <!-- decorative sky + route line -->
+        <svg viewBox="0 0 1200 520" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="route" x1="0" x2="1">
+              <stop offset="0" stop-color="rgba(124,92,255,.0)" />
+              <stop offset="0.45" stop-color="rgba(124,92,255,.55)" />
+              <stop offset="0.65" stop-color="rgba(47,228,255,.65)" />
+              <stop offset="1" stop-color="rgba(47,228,255,.0)" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- subtle stars -->
+          <g fill="rgba(255,255,255,.22)">
+            <circle cx="80" cy="70" r="2" />
+            <circle cx="210" cy="120" r="1.8" />
+            <circle cx="340" cy="60" r="1.5" />
+            <circle cx="520" cy="110" r="1.7" />
+            <circle cx="640" cy="80" r="2.2" />
+            <circle cx="740" cy="140" r="1.4" />
+            <circle cx="940" cy="70" r="2" />
+            <circle cx="1080" cy="120" r="1.6" />
+          </g>
+
+          <!-- route -->
+          <path id="routePath" d="M 120 420 C 320 240, 540 220, 720 300 S 1030 430, 1120 150" fill="none"
+            stroke="url(#route)" stroke-width="4" stroke-dasharray="9 10" filter="url(#glow)" />
+
+          <!-- plane icon animated along the path -->
+          <g>
+            <path id="plane" d="M12 2 L22 12 L12 22 L10.6 14.6 L2 12 L10.6 9.4 Z" fill="rgba(246,247,255,.95)"
+              filter="url(#glow)">
+              <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#routePath" />
+              </animateMotion>
+            </path>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Optional PNG overlays (place images in /assets and edit the OVERLAYS list in the script) -->
+      <div id="overlayLayer" class="overlay-layer" aria-hidden="true"></div>
+
+      <header class="top">
+        <div>
+          <div class="badge">
+            <span aria-hidden="true">✈️</span>
+            <span>De <b id="fromName">Você</b> → Para <b id="toName">Minha irmã</b></span>
+          </div>
+          <h1 class="title">Um recadinho atravessando fusos ✈️🎄</h1>
+          <p class="subtitle">Sem envio, sem estresse — só um cartãozinho em forma de site.</p>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="pane">
+          <div class="panel">
+            <div class="label">Message</div>
+            <p id="message" class="big" style="filter: blur(8px); user-select:none;">
+              Oi, mana 💛
+
+              Passando pra te lembrar que, mesmo longe, eu tô aqui torcendo por você em cada decolagem e em cada pouso.
+
+              Sei que estar em Londres dá aquela saudade de casa — e até de falar português no dia a dia — então aqui
+              vai um pedacinho do Brasil pra te fazer companhia.
+
+              Que seu fim de ano seja leve: céu calmo, boas escalas, gente gentil pelo caminho e muitos momentos de paz.
+
+              Feliz Natal e um Ano Novo lindo, com saúde, amor e sonhos aterrissando certinho.
+
+              Com carinho,
+            </p>
+
+            <div class="controls">
+              <button id="revealBtn">Abrir mensagem</button>
+              <button id="confettiBtn" class="secondary">Feliz Natal ✨</button>
+            </div>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <div class="strip" aria-label="Flight strip">
+            <div>
+              <div class="label">Today’s vibes</div>
+              <div class="row" style="margin-top:8px">
+                <span class="pill"><span class="dot"></span> Clear skies</span>
+                <span class="pill">🧳 Light baggage</span>
+                <span class="pill">🛬 Soft landing energy</span>
+              </div>
+            </div>
+            <div class="mono" style="text-align:right">
+              <div style="font-size:12px; color:var(--muted)">Route</div>
+              <div style="font-size:16px; font-weight:700">UK → JP</div>
+              <div style="font-size:16px; font-weight:700">JP → BR</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+      </section>
+
+      <footer class="footer">
+        <span>Made with ❤️ and minimal code.</span>
+        <span class="mono">v1.0</span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // ============================
+    // CONFIG — hardcode here
+    // ============================
+    const DEFAULTS = {
+      to: "Laura",
+      from: "Diego",
+      message: `Oi, mana 💛
+
+Passando pra te lembrar que, mesmo longe, eu tô aqui torcendo por você em cada decolagem e em cada pouso.
+
+Sei que estar em Londres dá aquela saudade de casa — e até de falar português no dia a dia — então aqui vai um pedacinho do Brasil pra te fazer companhia.
+
+Que seu fim de ano seja leve: céu calmo, boas escalas, gente gentil pelo caminho e muitos momentos de paz.
+
+Feliz Natal e um Ano Novo lindo, com saúde, amor e sonhos aterrissando certinho.
+
+Com carinho,
+Diego ✈️🎄`,
+    };
+
+    // Optional overlays (PNG with transparent background).
+    // Put your files in /assets and change these paths.
+    const OVERLAYS = [
+      { src: "assets/2025-christmas-1.png", cls: "o1", alt: "" },
+      { src: "assets/2025-christmas-2.png", cls: "o2", alt: "" },
+      { src: "assets/2025-christmas-3.png", cls: "o3", alt: "" },
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    const setText = (el, value) => (el.textContent = value);
+
+    function apply({ to, from, message }) {
+      setText($("toName"), to);
+      setText($("fromName"), from);
+      $("message").textContent = message;
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const t = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      setText($("clock"), t);
+    }
+
+    function reveal() {
+      const msg = $("message");
+      msg.style.filter = "none";
+      msg.style.userSelect = "text";
+      msg.animate([{ transform: "translateY(4px)", opacity: .7 }, { transform: "translateY(0)", opacity: 1 }], { duration: 220, easing: "ease-out" });
+    }
+
+    function celebrate() {
+      const count = 40;
+      const duration = 2400;
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement("div");
+        el.className = "confetti";
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = (duration + Math.random() * 1200) + "ms";
+        el.style.animationDelay = (Math.random() * 120) + "ms";
+        el.style.borderRadius = Math.random() > .6 ? "999px" : "3px";
+        el.style.width = (8 + Math.random() * 10) + "px";
+        el.style.height = (10 + Math.random() * 12) + "px";
+        el.style.background = `hsl(${Math.floor(Math.random() * 360)} 90% 65%)`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), duration + 1400);
+      }
+    }
+
+    async function copyLink() {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        $("copyBtn").textContent = "Copiado!";
+        setTimeout(() => $("copyBtn").textContent = "Copiar link", 1200);
+      } catch {
+        alert("Não deu pra copiar automaticamente — copie a URL pela barra de endereços.");
+      }
+    }
+
+    function mountOverlays() {
+      const layer = $("overlayLayer");
+      if (!layer) return;
+      OVERLAYS.forEach((o) => {
+        const img = document.createElement("img");
+        img.src = o.src;
+        img.alt = o.alt || "";
+        img.className = o.cls;
+        img.addEventListener("error", () => img.remove());
+        layer.appendChild(img);
+      });
+    }
+
+    (function init() {
+      apply(DEFAULTS);
+      mountOverlays();
+
+      updateClock();
+      setInterval(updateClock, 10_000);
+
+      $("revealBtn").addEventListener("click", reveal);
+      $("confettiBtn").addEventListener("click", celebrate);
+      $("copyBtn").addEventListener("click", copyLink);
+
+      setTimeout(reveal, 650);
+    })();
+  </script>
+</body>
+
+</html>
