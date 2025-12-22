@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Natal, mãe 🎄✨</title>
+  <meta name="description"
+    content="Um cartãozinho digital de Natal — clássico vermelho & verde, com luzinhas e magia." />
+
+  <!-- Social preview (opcional) -->
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Cartão de Natal 🎄" />
+  <meta property="og:title" content="Feliz Natal, mãe 🎄✨" />
+  <meta property="og:description" content="Um cartãozinho em forma de site, com amor." />
+
+  <meta property="og:image" content="https://carboni123.github.io/cards/merry-christmas-2025/assets/og-giftcard.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta property="og:url"
+    content="https://carboni123.github.io/cards/merry-christmas-2025/merry-christmas-2025-mae.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg1: #070a07;
+      --bg2: #0b150c;
+
+      --cardA: rgba(10, 16, 10, .90);
+      --cardB: rgba(10, 16, 10, .72);
+
+      --text: #fffaf2;
+      --muted: rgba(255, 250, 242, .78);
+
+      --red: #e11d48;
+      --red2: #ff3b3b;
+
+      --green: #16a34a;
+      --green2: #22c55e;
+
+      --gold: #f6d365;
+      --gold2: #ffef9a;
+
+      --border: rgba(255, 255, 255, .14);
+      --shadow: rgba(0, 0, 0, .55);
+
+      --ok: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(950px 680px at 16% 12%, rgba(225, 29, 72, .20) 0%, transparent 60%),
+        radial-gradient(860px 640px at 84% 18%, rgba(34, 197, 94, .18) 0%, transparent 58%),
+        radial-gradient(1100px 820px at 50% 105%, rgba(246, 211, 101, .10) 0%, transparent 55%),
+        linear-gradient(165deg, var(--bg1), var(--bg2));
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .card {
+      width: min(920px, 100%);
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .60);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* Breathing holiday glow */
+    .glow {
+      position: absolute;
+      inset: -2px;
+      background:
+        radial-gradient(760px 420px at 18% 22%, rgba(225, 29, 72, .22), transparent 70%),
+        radial-gradient(760px 420px at 82% 22%, rgba(34, 197, 94, .18), transparent 70%),
+        radial-gradient(980px 560px at 50% 88%, rgba(246, 211, 101, .12), transparent 70%);
+      filter: blur(18px);
+      opacity: .92;
+      z-index: 0;
+      pointer-events: none;
+      animation: breathe 5.2s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: .86
+      }
+
+      50% {
+        transform: translateY(6px) scale(1.015);
+        opacity: 1
+      }
+    }
+
+    /* Classic Christmas lights */
+    .card:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 60px;
+      background:
+        radial-gradient(circle at 18px 36px, rgba(255, 239, 154, .98) 0 4px, transparent 7px),
+        radial-gradient(circle at 60px 36px, rgba(255, 59, 59, .98) 0 4px, transparent 7px),
+        radial-gradient(circle at 102px 36px, rgba(34, 197, 94, .98) 0 4px, transparent 7px),
+        radial-gradient(circle at 144px 36px, rgba(255, 239, 154, .98) 0 4px, transparent 7px),
+        radial-gradient(circle at 186px 36px, rgba(255, 59, 59, .98) 0 4px, transparent 7px),
+        radial-gradient(circle at 228px 36px, rgba(34, 197, 94, .98) 0 4px, transparent 7px),
+        linear-gradient(180deg, rgba(0, 0, 0, .36), transparent 75%);
+      background-size: 240px 60px, 240px 60px, 240px 60px, 240px 60px, 240px 60px, 240px 60px, auto;
+      background-repeat: repeat-x;
+      pointer-events: none;
+      z-index: 4;
+      filter:
+        drop-shadow(0 8px 16px rgba(0, 0, 0, .40)) drop-shadow(0 0 12px rgba(255, 239, 154, .14));
+      animation: twinkle 1.7s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: .76
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    .overlay-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .overlay-layer img {
+      position: absolute;
+      max-width: 60%;
+      height: auto;
+      opacity: .96;
+      filter: drop-shadow(0 16px 30px rgba(0, 0, 0, .36));
+    }
+
+    .overlay-layer img.o1 {
+      top: -12px;
+      left: -12px;
+      width: 320px;
+      transform: rotate(-4deg);
+    }
+
+    .overlay-layer img.o2 {
+      top: -16px;
+      right: -8px;
+      width: 300px;
+      transform: rotate(5deg);
+    }
+
+    .overlay-layer img.o3 {
+      bottom: -24px;
+      right: 16px;
+      width: 260px;
+      opacity: .88;
+    }
+
+    /* Sleigh route layer */
+    .sky {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .72;
+      z-index: 1;
+    }
+
+    .sky svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Snow layer */
+    .snow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      opacity: .95;
+    }
+
+    .snow i {
+      position: absolute;
+      top: -12px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 250, 242, .95);
+      filter: drop-shadow(0 0 10px rgba(255, 250, 242, .18));
+      animation: snow-fall linear infinite;
+    }
+
+    @keyframes snow-fall {
+      to {
+        transform: translateY(110vh);
+        opacity: .96;
+      }
+    }
+
+    /* Sparkles */
+    .sparkles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      opacity: .45;
+    }
+
+    .sparkles b {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: rgba(255, 239, 154, .95);
+      box-shadow: 0 0 0 6px rgba(255, 239, 154, .06);
+      animation: sparkle 2.6s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: .45;
+      }
+
+      50% {
+        transform: scale(1.7);
+        opacity: .9;
+      }
+    }
+
+    .top,
+    .grid,
+    .footer {
+      position: relative;
+      z-index: 5;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .12);
+      color: var(--muted);
+      font-size: 13px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .20);
+    }
+
+    .badge b {
+      color: var(--text);
+      font-weight: 800
+    }
+
+    #toName,
+    #fromName {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(10, 16, 10, 0.85);
+      border: 1px solid rgba(255, 255, 255, .16);
+      text-shadow: 0 2px 16px rgba(0, 0, 0, .6);
+    }
+
+    .clock-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(10, 16, 10, 0.88);
+      border: 1px solid rgba(255, 255, 255, .16);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 6;
+    }
+
+    .top {
+      padding: 58px 44px 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .title {
+      margin: 14px 0 0;
+      font-size: clamp(24px, 3.7vw, 38px);
+      line-height: 1.12;
+      letter-spacing: -.02em;
+      text-shadow:
+        0 16px 36px rgba(0, 0, 0, .38),
+        0 0 22px rgba(246, 211, 101, .10);
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .pane {
+      padding: 22px 26px 28px;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow:
+        0 18px 44px rgba(0, 0, 0, .22),
+        inset 0 0 0 1px rgba(255, 255, 255, .04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel:before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(110deg,
+          transparent 0%,
+          rgba(255, 239, 154, .10) 45%,
+          rgba(255, 59, 59, .10) 55%,
+          transparent 100%);
+      transform: translateX(-70%);
+      animation: panel-sheen 5.6s linear infinite;
+      pointer-events: none;
+      opacity: .9;
+    }
+
+    @keyframes panel-sheen {
+      0% {
+        transform: translateX(-70%);
+      }
+
+      100% {
+        transform: translateX(70%);
+      }
+    }
+
+    .label {
+      color: rgba(255, 250, 242, .72);
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .big {
+      font-size: 18px;
+      line-height: 1.62;
+      margin: 12px 0 0;
+      white-space: pre-wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--red), var(--green));
+      box-shadow:
+        0 16px 36px rgba(225, 29, 72, .18),
+        0 16px 36px rgba(34, 197, 94, .14);
+      transition: transform .08s ease, filter .2s ease;
+    }
+
+    button.secondary {
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .14);
+      box-shadow: none;
+      color: var(--text);
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    button:active {
+      transform: translateY(1px)
+    }
+
+    button:hover {
+      filter: brightness(1.06)
+    }
+
+    .strip {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, .18);
+      border: 1px solid rgba(255, 255, 255, .12);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .18);
+    }
+
+    .strip:before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(255, 239, 154, .16),
+          rgba(255, 59, 59, .14),
+          rgba(34, 197, 94, .12),
+          transparent);
+      transform: translateX(-70%);
+      animation: sheen 4.1s linear infinite;
+      pointer-events: none;
+      opacity: .9;
+    }
+
+    @keyframes sheen {
+      0% {
+        transform: translateX(-75%)
+      }
+
+      100% {
+        transform: translateX(75%)
+      }
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .12);
+      font-size: 12px;
+      color: rgba(255, 250, 242, .76);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, .16)
+    }
+
+    .footer {
+      padding: 16px 26px 22px;
+      border-top: 1px solid rgba(255, 255, 255, .10);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: rgba(255, 250, 242, .70);
+      font-size: 12px;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 14px;
+      opacity: .95;
+      transform: rotate(0deg);
+      animation: fall linear forwards;
+      z-index: 999;
+      pointer-events: none;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .28));
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: .98
+      }
+    }
+
+    .reveal-pop {
+      animation: pop .22s ease-out both;
+    }
+
+    @keyframes pop {
+      from {
+        transform: translateY(4px);
+        opacity: .75;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <main class="card" aria-label="Cartão digital de Natal">
+      <div class="glow" aria-hidden="true"></div>
+
+      <!-- Decorative sky + animated route -->
+      <div class="sky" aria-hidden="true">
+        <svg viewBox="0 0 1200 520" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="route" x1="0" x2="1">
+              <stop offset="0" stop-color="rgba(255,239,154,0)" />
+              <stop offset="0.35" stop-color="rgba(255,59,59,.48)" />
+              <stop offset="0.60" stop-color="rgba(34,197,94,.46)" />
+              <stop offset="0.85" stop-color="rgba(255,239,154,.44)" />
+              <stop offset="1" stop-color="rgba(255,239,154,0)" />
+            </linearGradient>
+
+            <filter id="glowRoute">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <filter id="softGlow">
+              <feGaussianBlur stdDeviation="2" result="b" />
+              <feMerge>
+                <feMergeNode in="b" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- subtle stars -->
+          <g fill="rgba(255,250,242,.18)">
+            <circle cx="80" cy="70" r="2" />
+            <circle cx="210" cy="120" r="1.8" />
+            <circle cx="340" cy="60" r="1.5" />
+            <circle cx="520" cy="110" r="1.7" />
+            <circle cx="640" cy="80" r="2.2" />
+            <circle cx="740" cy="140" r="1.4" />
+            <circle cx="940" cy="70" r="2" />
+            <circle cx="1080" cy="120" r="1.6" />
+          </g>
+
+          <!-- route -->
+          <path id="routePath" d="M 110 410 C 320 230, 560 220, 740 300 S 1040 430, 1130 150" fill="none"
+            stroke="url(#route)" stroke-width="4" stroke-dasharray="9 10" filter="url(#glowRoute)" opacity=".95" />
+
+          <!-- Santa sleigh icon (stylized) -->
+          <g filter="url(#softGlow)" opacity=".98">
+            <g id="sleigh" fill="rgba(255,250,242,.96)">
+              <!-- body -->
+              <path
+                d="M10 14 C14 9, 22 9, 26 14 C28 16, 28 19, 26 21 C23 24, 17 24, 14 21 C12 19, 8 19, 6 21 C4 23, 3 26, 6 28 C10 31, 22 31, 28 28 C32 26, 35 20, 33 15 C31 8, 23 5, 16 6 C12 6, 8 8, 6 11 Z" />
+              <!-- gift/seat -->
+              <rect x="18" y="9" width="8" height="6" rx="1.2" opacity=".9" />
+              <!-- runners -->
+              <path d="M6 30 C10 33, 20 34, 30 30" fill="none" stroke="rgba(255,250,242,.92)" stroke-width="2"
+                stroke-linecap="round" />
+              <path d="M5 28 C10 31, 22 32, 31 28" fill="none" stroke="rgba(255,250,242,.78)" stroke-width="1.6"
+                stroke-linecap="round" />
+              <!-- reins -->
+              <path d="M28 14 C34 11, 38 11, 44 9" fill="none" stroke="rgba(255,250,242,.70)" stroke-width="1.4"
+                stroke-linecap="round" />
+            </g>
+
+            <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#routePath" />
+            </animateMotion>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Sparkles -->
+      <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+
+      <!-- PNG overlays -->
+      <div id="overlayLayer" class="overlay-layer" aria-hidden="true"></div>
+
+      <!-- Snow -->
+      <div class="snow" id="snow" aria-hidden="true"></div>
+
+      <header class="top">
+        <div>
+          <div class="badge">
+            <span aria-hidden="true">🎄</span>
+            <span>De <b id="fromName">Diego</b> → Para <b id="toName">Mãe</b></span>
+          </div>
+          <h1 class="title">Feliz Natal, mãe 🎄✨</h1>
+          <p class="subtitle">Um recadinho simples, mas cheio de carinho — com luzinhas, neve e um toque de magia.</p>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="pane">
+          <div class="panel">
+            <div class="label">Mensagem</div>
+
+            <p id="message" class="big">
+              Oi, mãe 🙏
+
+              Que Deus abençoe o seu Natal com saúde, paz e proteção.
+              Obrigada por cada oração, cada cuidado e por ser luz na nossa família.
+
+              Feliz Natal!
+
+              Diego 🎄✨
+            </p>
+
+            <div class="controls">
+              <button id="revealBtn">Abrir mensagem</button>
+              <button id="confettiBtn" class="secondary">Feliz Natal ✨</button>
+              <button id="copyBtn" class="secondary">Copiar link</button>
+            </div>
+          </div>
+
+          <div class="strip" aria-label="Climinha de Natal">
+            <div>
+              <div class="label">Climinha de hoje</div>
+              <div class="row" style="margin-top:8px">
+                <span class="pill"><span class="dot"></span> Paz no coração</span>
+                <span class="pill">🎁 Amor em família</span>
+                <span class="pill">✨ Gratidão</span>
+              </div>
+            </div>
+            <div class="mono" style="text-align:right; position:relative; z-index:1">
+              <div style="font-size:12px; color:rgba(255,250,242,.72)">Sinal</div>
+              <div style="font-size:16px; font-weight:900">Boas vibrações</div>
+              <div style="font-size:16px; font-weight:900">Sempre 💛</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Feito com ❤️</span>
+        <span class="mono">v2.2</span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // ============================
+    // CONFIG — edite aqui
+    // ============================
+    const DEFAULTS = {
+      to: "Mãe",
+      from: "Diego",
+      message: `Oi, mãe 🙏
+
+Que Deus abençoe o seu Natal com saúde, paz e proteção.
+Obrigada por cada oração, cada cuidado e por ser luz na nossa família.
+
+Feliz Natal!
+
+Diego 🎄✨`,
+    };
+
+    // Optional overlays (PNG com fundo transparente).
+    // Coloque os arquivos em /assets e altere os paths abaixo.
+    const OVERLAYS = [
+      { src: "assets/2025-christmas-1.png", cls: "o1", alt: "" },
+      { src: "assets/2025-christmas-5.png", cls: "o2", alt: "" },
+      { src: "assets/2025-christmas-1.png", cls: "o3", alt: "" },
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    const setText = (el, value) => (el.textContent = value);
+
+    function apply({ to, from, message }) {
+      setText($("toName"), to);
+      setText($("fromName"), from);
+      $("message").textContent = message;
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const t = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      setText($("clock"), t);
+    }
+
+    function setMessageHidden() {
+      const msg = $("message");
+      msg.style.filter = "blur(10px)";
+      msg.style.userSelect = "none";
+    }
+
+    function reveal() {
+      const msg = $("message");
+      msg.style.filter = "none";
+      msg.style.userSelect = "text";
+
+      // message pop animation
+      msg.classList.remove("reveal-pop");
+      void msg.offsetWidth; // restart animation
+      msg.classList.add("reveal-pop");
+
+      // auto confetti when opening
+      celebrate();
+    }
+
+    $("revealBtn").addEventListener("click", reveal);
+
+
+    function celebrate() {
+      const count = 52;
+      const duration = 2600;
+
+      // Holiday-only palette
+      const palette = [
+        { h: 0, s: 90, l: 62 },     // red
+        { h: 350, s: 90, l: 60 },   // crimson
+        { h: 130, s: 70, l: 48 },   // green
+        { h: 150, s: 70, l: 52 },   // emerald
+        { h: 45, s: 92, l: 62 },    // gold
+        { h: 55, s: 85, l: 70 },    // warm gold
+        { h: 0, s: 0, l: 96 },      // near-white
+      ];
+
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement("div");
+        el.className = "confetti";
+
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = (duration + Math.random() * 1600) + "ms";
+        el.style.animationDelay = (Math.random() * 160) + "ms";
+
+        el.style.borderRadius = Math.random() > 0.60 ? "999px" : "3px";
+        el.style.width = (8 + Math.random() * 10) + "px";
+        el.style.height = (10 + Math.random() * 14) + "px";
+
+        const p = palette[Math.floor(Math.random() * palette.length)];
+        el.style.background = `hsl(${p.h} ${p.s}% ${p.l}%)`;
+
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), duration + 1800);
+      }
+    }
+
+    async function copyLink() {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        const btn = $("copyBtn");
+        const old = btn.textContent;
+        btn.textContent = "Copiado!";
+        setTimeout(() => (btn.textContent = old), 1200);
+      } catch {
+        alert("Não deu pra copiar automaticamente — copie a URL pela barra de endereços.");
+      }
+    }
+
+    function mountOverlays() {
+      const layer = $("overlayLayer");
+      if (!layer) return;
+
+      OVERLAYS.forEach((o) => {
+        const img = document.createElement("img");
+        img.src = o.src;
+        img.alt = o.alt || "";
+        img.className = o.cls;
+        img.addEventListener("error", () => img.remove());
+        layer.appendChild(img);
+      });
+    }
+
+    function mountSnow() {
+      const container = $("snow");
+      if (!container) return;
+
+      const flakes = 38;
+      for (let i = 0; i < flakes; i++) {
+        const f = document.createElement("i");
+        const size = 3 + Math.random() * 5;
+        const left = Math.random() * 100;
+
+        f.style.left = left + "vw";
+        f.style.width = size + "px";
+        f.style.height = size + "px";
+        f.style.opacity = String(0.55 + Math.random() * 0.45);
+
+        const dur = 6 + Math.random() * 7;
+        const delay = Math.random() * 4;
+
+        f.style.animationDuration = dur + "s";
+        f.style.animationDelay = delay + "s";
+
+        const sway = (Math.random() * 46 - 23).toFixed(2);
+        f.animate(
+          [{ transform: "translateX(0)" }, { transform: `translateX(${sway}px)` }, { transform: "translateX(0)" }],
+          { duration: 3200 + Math.random() * 3000, iterations: Infinity, easing: "ease-in-out" }
+        );
+
+        container.appendChild(f);
+      }
+    }
+
+    function mountSparkles() {
+      const container = $("sparkles");
+      if (!container) return;
+
+      const n = 14;
+      for (let i = 0; i < n; i++) {
+        const s = document.createElement("b");
+        s.style.left = (6 + Math.random() * 88) + "%";
+        s.style.top = (8 + Math.random() * 70) + "%";
+        s.style.animationDelay = (Math.random() * 1.6) + "s";
+        s.style.animationDuration = (2.0 + Math.random() * 2.8) + "s";
+        const scale = 0.8 + Math.random() * 1.6;
+        s.style.transform = `scale(${scale})`;
+        container.appendChild(s);
+      }
+    }
+
+    (function init() {
+      apply(DEFAULTS);
+
+      mountOverlays();
+      mountSnow();
+      mountSparkles();
+
+      // ensure message starts blurred/hidden
+      setMessageHidden();
+
+      updateClock();
+      setInterval(updateClock, 10_000);
+
+      $("revealBtn").addEventListener("click", reveal);
+      $("confettiBtn").addEventListener("click", celebrate);
+      $("copyBtn").addEventListener("click", copyLink);
+
+      // keep hidden at load; remove this line if you don't want auto reveal
+      // setTimeout(reveal, 900);
+    })();
+  </script>
+</body>
+
+</html>
